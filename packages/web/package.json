@@ -1,5 +1,5 @@
 {
-  "name": "@sloth/web",
+  "name": "@boilerplate/web",
   "version": "0.1.0",
   "scripts": {
     "build": "rm -rf public/dist && rollup -c",
