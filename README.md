@@ -1,4 +1,4 @@
-## 📦 Boilerplate. 
+## 🎉 Fuzzy Fiesta. 
 
 A full-stack GraphQL boilerplate project.
 

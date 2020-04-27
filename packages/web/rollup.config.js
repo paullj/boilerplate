@@ -36,6 +36,11 @@ export default {
     file: 'public/dist/index.js',
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(
+        production ? 'production' : 'development',
+      ),
+    }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -49,11 +54,6 @@ export default {
         // css source maps
         css.write('public/dist/index.css');
       },
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(
-        production ? 'production' : 'development',
-      ),
     }),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In

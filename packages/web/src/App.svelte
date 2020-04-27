@@ -1,7 +1,8 @@
-<script>t, query } from '@urql/svelte';
-import { HelloDocument } from './types/graphql.ts';
+<script>
+  import { initClient, query } from '@urql/svelte';
+  import { HelloDocument } from './types/graphql.ts';
 
-let todos;let $todos;
+  let todos;
 
   initClient({ url: 'http://localhost:4000/graphql' });
   const i = 0;
@@ -21,4 +22,4 @@ let todos;let $todos;
   Loading...
 {:else if $todos.error}
   Oh no! {$todos.error.message}
-{:else}{$todos.data.hello;}{/if}
+{:else}{$todos.data.hello}{/if}

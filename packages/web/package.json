@@ -1,6 +1,7 @@
 {
   "name": "@boilerplate/web",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "build": "rm -rf public/dist && rollup -c",
     "dev": "rollup -c -w",
