@@ -6,7 +6,7 @@
 
   initClient({ url: 'http://localhost:4000/graphql' });
   const i = 0;
-  $: todos = query({
+  $: hello = query({
     query: HelloDocument,
   });
 </script>
@@ -17,9 +17,14 @@
   @import 'tailwindcss/utilities';
 </style>
 
-<h1>Boilerplate</h1>
-{#if $todos.fetching}
-  Loading...
-{:else if $todos.error}
-  Oh no! {$todos.error.message}
-{:else}{$todos.data.hello}{/if}
+<div class="p-5">
+  {#if $hello.fetching}
+    <p>Loading...</p>
+  {:else if $hello.error}
+    <p>Oh no! {$hello.error.message}</p>
+  {:else}
+    <h1 class="text-5xl font-sans antialiasing font-bold text-gray-900">
+      {$hello.data.hello} from the Boilerplate server.
+    </h1>
+  {/if}
+</div>
