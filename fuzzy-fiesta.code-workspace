@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "📦 @boilerplate/server",
+			"path": "packages/server"
+		},
+		{
+			"name": "🚀 @boilerplate/web",
+			"path": "packages/web"
+		}
+	],
+	"settings": {}
+}
