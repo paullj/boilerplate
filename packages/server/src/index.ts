@@ -4,6 +4,7 @@ import env from 'dotenv';
 import fastify from 'fastify';
 import gql from 'fastify-gql';
 import cookie from 'fastify-cookie';
+import cors from 'fastify-cors';
 
 import { generateSchema } from './utils/buildSchema';
 
@@ -14,6 +15,9 @@ const startServer = async () => {
   const app = fastify();
 
   app.register(cookie);
+  app.register(cors, {
+    origin: ['http://127.0.0.1:5000', 'http://localhost:5000'],
+  });
 
   // TODO: Look into graphql-jit
   app.register(gql, {
@@ -32,7 +36,7 @@ const startServer = async () => {
   app.listen(port, 'localhost', (error, address) => {
     if (error) {
       console.error(error);
-      process.exit(1);
+      process.exitCode = 1;
     }
     console.log(`🚀 Server ready at ${address}`);
     if (process.env.NODE_ENV === 'development') {
@@ -41,13 +45,13 @@ const startServer = async () => {
   });
 
   // FIXME: Still sometimes doesn't close properly
-  process.once('SIGINT', () => {
-    console.log('\n🛌 Server shutting down...');
-    app.close(() => {
-      // process.kill(process.pid, 'SIGUSR2');
-      process.exit();
-    });
-  });
+  // process.once('SIGINT', () => {
+  //   console.log('\n🛌 Server shutting down...');
+  //   app.close(() => {
+  //     process.kill(process.pid, 'SIGKILL');
+  //     process.exit();
+  //   });
+  // });
 };
 
 startServer();
